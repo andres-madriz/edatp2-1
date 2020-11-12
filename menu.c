@@ -14,6 +14,7 @@
 #include <sqlext.h>
 #include "odbc.h"
 #include "products.h"
+#include "customers.h"
 
 
 static int ShowMainMenu();
@@ -47,7 +48,7 @@ int main(void) {
                 break;
 
             case 3: {
-                printf("Customers menu not ready yet\n");
+                ShowCustomersMenu(dbc, ret);
             }
                 break;
             case 4: {

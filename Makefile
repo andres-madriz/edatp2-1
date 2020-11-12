@@ -22,8 +22,9 @@ HEADERS = odbc.h products.h
 
 EXE = menu
 P = products
+C = customers
 ODBC = odbc
-DEPS = $(P).o $(ODBC).o
+DEPS = $(P).o $(C).o $(ODBC).o
 OBJ = $(EXE).o
 
 all: dropdb createdb restore shell $(EXE) log
@@ -49,6 +50,10 @@ $(P).o: $(P).h
 	@echo Compiling $(P)
 	$(CC) $(CFLAGS) -c $(P).c
 
+$(C).o: $(C).h
+	@echo Compiling $(C)
+	$(CC) $(CFLAGS) -c $(C).c
+
 $(ODBC).o: $(ODBC).h
 	@echo Compiling $(ODBC)
 	$(CC) $(CFLAGS) -c $(ODBC).c
@@ -65,5 +70,6 @@ log:
 clean :
 	rm -f *.o core $(EXE)
 	rm -f *.o core $(P)
+	rm -f *.o core $(C)
 	rm -f *.o core $(ODBC)
 	rm -f *.log
